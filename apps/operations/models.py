@@ -59,8 +59,8 @@ class UserFavorite(BaseModel):
         verbose_name = "用户收藏"
         verbose_name_plural = verbose_name
 
-    # def __str__(self):
-        # return "{user}_{id}".format(user=self.user.username, id=self.fav_id)
+    def __str__(self):
+        return "{user}_{id}".format(user=self.user.username, id=self.fav_id)
 
 
 class UserMessage(BaseModel):

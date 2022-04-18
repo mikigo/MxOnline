@@ -4,6 +4,7 @@ from django.db import models
 
 from apps.users.models import BaseModel
 from apps.organizations.models import Teacher
+
 """
 设计表结构
 实体之间的关系（一对多），定义具体字段（类型，是否必填）
@@ -39,6 +40,9 @@ class Course(BaseModel):
         verbose_name = "课程信息"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class Lesson(BaseModel):
     # on_delete表示对应的外键数据被删除后，当前数据应该怎么办
@@ -51,6 +55,9 @@ class Lesson(BaseModel):
         verbose_name = "章节信息"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class Video(BaseModel):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
@@ -62,6 +69,9 @@ class Video(BaseModel):
         verbose_name = "视频"
         verbose_name_plural = verbose_name
 
+    def __str__(self):
+        return self.name
+
 
 class CourseResource(BaseModel):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -71,3 +81,6 @@ class CourseResource(BaseModel):
     class Meta:
         verbose_name = "课程资源"
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
