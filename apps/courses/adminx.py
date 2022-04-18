@@ -13,6 +13,16 @@ from apps.courses.models import Video
 from apps.courses.models import CourseResource
 
 
+class GlobalSettings:
+    site_title = "统信自动化测试后台管理系统"
+    site_footer = "统信自动化测试平台"
+
+
+class BaseSettings:
+    enable_themes = True
+    use_bootswatch = True
+
+
 class CourseAdmin(object):
     list_display = ["name", "desc", "detail", "degree", "learn_time", "students", "teacher"]
     search_fields = ["name", "desc", "detail", "degree", "students"]
@@ -43,3 +53,7 @@ xadmin.site.register(Course, CourseAdmin)
 xadmin.site.register(Lesson, LessonAdmin)
 xadmin.site.register(Video, VideoAdmin)
 xadmin.site.register(CourseResource, CourseResourceAdmin)
+
+xadmin.site.register(xadmin.views.CommAdminView, GlobalSettings)
+xadmin.site.register(xadmin.views.BaseAdminView, BaseSettings)
+
