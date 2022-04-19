@@ -26,7 +26,6 @@ class CityAdmin(object):
     list_display = ["id", "name", "desc"]
     # 搜索的时候会搜索哪些字段
     search_fields = ["name", "desc"]
-    # 搜索过滤
     list_filter = ["name", "desc", "add_time"]
     # 直接在列表中编辑
     list_editable = ["name", "desc"]

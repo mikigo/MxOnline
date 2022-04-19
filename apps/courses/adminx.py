@@ -16,6 +16,7 @@ from apps.courses.models import CourseResource
 class GlobalSettings:
     site_title = "统信自动化测试后台管理系统"
     site_footer = "统信自动化测试平台"
+    # menu_style = "accordion"  # 侧边栏折叠
 
 
 class BaseSettings:
