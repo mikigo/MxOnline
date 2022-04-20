@@ -10,6 +10,15 @@ from django.urls import reverse
 from apps.users.forms import LoginForm
 
 
+class RegisterView(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, "register.html")
+
+    def post(self, request, *args, **kwargs):
+        return render(request, "register.html")
+
+
 class LogoutView(View):
 
     def get(self, request, *args, **kwargs):
