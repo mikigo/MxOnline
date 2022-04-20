@@ -4,17 +4,28 @@ from django.shortcuts import render
 from django.views.generic.base import View
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
+from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from apps.users.forms import LoginForm
 
 
+class LogoutView(View):
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect(reverse("index"))
+
+
 class LoginView(View):
 
     def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(reverse("index"))
         return render(request, "login.html")
 
     def post(self, request, *args, **kwargs):
+        # 登陆表单
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
             # user_name = request.POST.get("username", "")
