@@ -21,6 +21,7 @@ from django.views.generic import TemplateView
 from apps.users.views import LoginView
 from apps.users.views import LogoutView
 from apps.users.views import RegisterView
+from apps.organizations.views import OrgView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +31,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', LogoutView.as_view(), name="logout"),
     path('register/', RegisterView.as_view(), name="register"),
+
+    # 机构相关页面
+    url(r'^org_list/', OrgView.as_view(), name="org_list"),
 ]
