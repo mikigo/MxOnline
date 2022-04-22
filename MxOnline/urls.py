@@ -22,6 +22,8 @@ from apps.users.views import LoginView
 from apps.users.views import LogoutView
 from apps.users.views import RegisterView
 from apps.organizations.views import OrgView
+from django.views.static import serve
+from MxOnline.settings import MEDIA_ROOT
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,4 +36,6 @@ urlpatterns = [
 
     # 机构相关页面
     url(r'^org_list/', OrgView.as_view(), name="org_list"),
+    # 配置上传文件的访问url
+    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
 ]
