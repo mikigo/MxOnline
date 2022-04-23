@@ -37,6 +37,9 @@ class CourseOrg(BaseModel):
     course_nums = models.IntegerField(default=0, verbose_name="课程数")
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
+    is_auth = models.BooleanField(default=False, verbose_name="是否认证")
+    is_gold = models.BooleanField(default=False, verbose_name="是否金牌")
+
     class Meta:
         verbose_name = "课程机构"
         verbose_name_plural = verbose_name
